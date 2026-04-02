@@ -12,16 +12,39 @@ export default function Contact() {
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
     
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${contact.email}`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          _subject: "New Message from Portfolio: " + formData.subject,
+          _template: "table"
+        })
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 3000);
+      }
+    } catch (error) {
+      setStatus('error');
       setTimeout(() => setStatus('idle'), 3000);
-    }, 1500);
+    }
   };
 
   const contactCards = [
@@ -47,7 +70,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="flex flex-col space-y-8"
           >
-            <p className="text-xl text-textMuted font-dm leading-relaxed">
+            <p className="text-xl text-textMuted font-space leading-relaxed">
               Whether you have a project, an opportunity, or just want to say hi — my inbox is always open. Let's build something amazing together!
             </p>
 
@@ -61,23 +84,23 @@ export default function Contact() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 pt-6 border-t border-borderColor">
               {contactCards.map((card, i) => (
                 card.href ? (
-                  <a key={i} href={card.href} className="flex items-center gap-4 glass-card p-4 hover:border-accentBlue group hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,212,255,0.2)]">
-                    <div className="p-3 rounded-full bg-accentBlue/10 text-accentBlue group-hover:bg-accentBlue group-hover:text-white transition-colors">
+                  <a key={i} href={card.href} className="flex items-center gap-4 glass-card p-4 hover:border-textPrimary group hover:-translate-y-1 hover:shadow-glow">
+                    <div className="p-3 rounded-full bg-bgSecondary text-textPrimary group-hover:bg-textPrimary group-hover:text-bgPrimary transition-colors">
                       {card.icon}
                     </div>
                     <div>
                       <p className="text-sm text-textMuted uppercase font-bold tracking-widest">{card.title}</p>
-                      <p className="text-textPrimary font-syne font-medium mt-1">{card.value}</p>
+                      <p className="text-textPrimary font-sora font-medium mt-1">{card.value}</p>
                     </div>
                   </a>
                 ) : (
                   <div key={i} className="flex items-center gap-4 glass-card p-4">
-                    <div className="p-3 rounded-full bg-accentViolet/10 text-accentViolet">
+                    <div className="p-3 rounded-full bg-bgSecondary text-textPrimary">
                       {card.icon}
                     </div>
                     <div>
                       <p className="text-sm text-textMuted uppercase font-bold tracking-widest">{card.title}</p>
-                      <p className="text-textPrimary font-syne font-medium mt-1">{card.value}</p>
+                      <p className="text-textPrimary font-sora font-medium mt-1">{card.value}</p>
                     </div>
                   </div>
                 )
@@ -103,38 +126,39 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit} className="glass-card p-8 md:p-10 space-y-6 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-accentBlue/5 rounded-full blur-[80px] -z-10 group-hover:bg-accentBlue/10 transition-colors duration-700" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-accentViolet/5 rounded-full blur-[80px] -z-10 group-hover:bg-accentViolet/10 transition-colors duration-700" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-textMuted opacity-10 rounded-full blur-[80px] -z-10 group-hover:opacity-20 transition-opacity duration-700" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-textMuted opacity-10 rounded-full blur-[80px] -z-10 group-hover:opacity-20 transition-opacity duration-700" />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 z-10 relative">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-bold text-textPrimary font-syne uppercase tracking-wider">Name</label>
-                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-bgSecondary border border-borderColor rounded-lg px-4 py-3 text-textPrimary focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors font-dm" placeholder="John Doe" />
+                  <label htmlFor="name" className="text-sm font-bold text-textPrimary font-sora uppercase tracking-wider">Name</label>
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-bgSecondary border border-borderColor rounded-lg px-4 py-3 text-textPrimary focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors font-space" placeholder="John Doe" />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-bold text-textPrimary font-syne uppercase tracking-wider">Email</label>
-                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-bgSecondary border border-borderColor rounded-lg px-4 py-3 text-textPrimary focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors font-dm" placeholder="john@example.com" />
+                  <label htmlFor="email" className="text-sm font-bold text-textPrimary font-sora uppercase tracking-wider">Email</label>
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-bgSecondary border border-borderColor rounded-lg px-4 py-3 text-textPrimary focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors font-space" placeholder="john@example.com" />
                 </div>
               </div>
 
               <div className="space-y-2 relative z-10">
-                <label htmlFor="subject" className="text-sm font-bold text-textPrimary font-syne uppercase tracking-wider">Subject</label>
-                <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full bg-bgSecondary border border-borderColor rounded-lg px-4 py-3 text-textPrimary focus:outline-none focus:border-accentViolet focus:ring-1 focus:ring-accentViolet transition-colors font-dm" placeholder="Project Inquiry" />
+                <label htmlFor="subject" className="text-sm font-bold text-textPrimary font-sora uppercase tracking-wider">Subject</label>
+                <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full bg-bgSecondary border border-borderColor rounded-lg px-4 py-3 text-textPrimary focus:outline-none focus:border-accentViolet focus:ring-1 focus:ring-accentViolet transition-colors font-space" placeholder="Project Inquiry" />
               </div>
 
               <div className="space-y-2 relative z-10">
-                <label htmlFor="message" className="text-sm font-bold text-textPrimary font-syne uppercase tracking-wider">Message</label>
-                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full bg-bgSecondary border border-borderColor rounded-lg px-4 py-3 text-textPrimary focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors font-dm resize-none" placeholder="Hello..." />
+                <label htmlFor="message" className="text-sm font-bold text-textPrimary font-sora uppercase tracking-wider">Message</label>
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full bg-bgSecondary border border-borderColor rounded-lg px-4 py-3 text-textPrimary focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors font-space resize-none" placeholder="Hello..." />
               </div>
 
               <button 
                 type="submit" 
                 disabled={status === 'loading' || status === 'success'}
-                className="w-full py-4 rounded-lg bg-gradient-to-r from-accentBlue to-accentViolet text-white font-syne font-bold text-lg hover:shadow-[0_0_20px_rgba(0,212,255,0.6)] hover:scale-[1.02] transition-all disabled:opacity-70 disabled:hover:scale-100 disabled:hover:shadow-none flex items-center justify-center gap-2 relative z-10"
+                className="w-full py-4 rounded-lg bg-textPrimary text-bgPrimary font-sora font-bold text-lg hover:shadow-glow hover:scale-[1.02] transition-all disabled:opacity-70 disabled:hover:scale-100 disabled:hover:shadow-none flex items-center justify-center gap-2 relative z-10"
               >
                 {status === 'idle' && <><Send size={20} /> Send Message</>}
                 {status === 'loading' && <span className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full" />}
                 {status === 'success' && <><CheckCircle size={20} /> Sent Successfully!</>}
+                {status === 'error' && <>Failed to Send. Try Again!</>}
               </button>
             </form>
           </motion.div>

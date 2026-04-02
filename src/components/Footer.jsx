@@ -8,10 +8,10 @@ export default function Footer() {
     <footer className="w-full glass-nav border-t-0 border-b-0 py-8 relative overflow-hidden mt-auto">
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accentBlue to-transparent opacity-50" />
       <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-4">
-        <h3 className="font-syne font-bold text-xl text-textPrimary tracking-widest">
+        <h3 className="font-sora font-bold text-xl text-textPrimary tracking-widest">
           {portfolioData.personal.name} {portfolioData.personal.lastName}
         </h3>
-        <p className="text-textMuted text-sm font-dm opacity-80">
+        <p className="text-textMuted text-sm font-space opacity-80">
           Built with React & Tailwind CSS
         </p>
         <div className="flex space-x-6 mt-4">

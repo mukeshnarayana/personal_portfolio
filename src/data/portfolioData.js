@@ -109,7 +109,7 @@ export const portfolioData = {
     languages: ["JavaScript", "SQL", "YAML"]
   },
   contact: {
-    email: "mukeshnarayanapabolu@gmail.com",
+    email: "mukeshpabolu123@gmail.com",
     phone: "+91 8374831031",
     location: "Hyderabad, India",
     availability: true

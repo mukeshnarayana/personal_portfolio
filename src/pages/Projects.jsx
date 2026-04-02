@@ -29,8 +29,8 @@ export default function Projects() {
               onClick={() => setFilter(cat)}
               className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                 filter === cat 
-                  ? 'bg-accentBlue text-white shadow-[0_0_15px_rgba(0,212,255,0.6)]' 
-                  : 'bg-bgSecondary text-textPrimary hover:bg-accentBlue/20 hover:text-accentBlue'
+                  ? 'bg-textPrimary text-bgPrimary shadow-glow' 
+                  : 'bg-bgSecondary text-textMuted hover:text-textPrimary border border-transparent hover:border-borderColor'
               }`}
             >
               {cat}
@@ -49,15 +49,15 @@ export default function Projects() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 key={project.name + index}
-                className="glass-card flex flex-col h-full overflow-hidden group hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,212,255,0.2)]"
+                className="glass-card flex flex-col h-full overflow-hidden group hover:-translate-y-2 hover:shadow-glow"
               >
                 {/* Image Placeholder */}
                 <div className="relative w-full h-48 bg-gradient-to-br from-bgSecondary to-bgPrimary overflow-hidden border-b border-borderColor">
                   {project.image ? (
                     <img src={project.image} alt={project.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-accentBlue/5 group-hover:bg-accentBlue/10 transition-colors">
-                      <CodeSquare size={48} className="text-accentBlue/40 group-hover:text-accentBlue/60 group-hover:scale-110 transition-all duration-500" />
+                    <div className="w-full h-full flex items-center justify-center bg-bgSecondary group-hover:bg-borderColor transition-colors">
+                      <CodeSquare size={48} className="text-textMuted group-hover:text-textPrimary group-hover:scale-110 transition-all duration-500" />
                     </div>
                   )}
                   {/* Overlay on hover */}
@@ -74,13 +74,13 @@ export default function Projects() {
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="text-xs font-bold text-accentViolet uppercase tracking-wider mb-2">{project.category}</div>
-                  <h3 className="font-syne font-bold text-xl text-textPrimary mb-3">{project.name}</h3>
+                  <h3 className="font-sora font-bold text-xl text-textPrimary mb-3">{project.name}</h3>
                   <p className="text-sm text-textMuted line-clamp-3 mb-6 flex-grow">{project.description}</p>
                   
                   {/* Tech stack pills */}
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tech.map((t, i) => (
-                      <span key={i} className="px-2 py-1 text-xs font-medium rounded-md bg-accentBlue/10 border border-accentBlue/30 text-accentBlue">
+                      <span key={i} className="px-2 py-1 text-xs font-medium rounded-md bg-bgSecondary border border-borderColor text-textPrimary">
                         {t}
                       </span>
                     ))}

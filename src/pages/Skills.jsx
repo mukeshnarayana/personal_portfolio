@@ -79,7 +79,7 @@ export default function Skills() {
                          <div className="w-16 h-16 rounded-full bg-accentBlue/10 flex items-center justify-center text-accentBlue mb-4 font-bold text-2xl group-hover:bg-accentBlue group-hover:text-white transition-all shadow-[0_0_10px_rgba(0,212,255,0.1)]">
                            {skill.charAt(0)}
                          </div>
-                         <p className="font-syne font-bold text-center text-sm group-hover:text-accentBlue">{skill}</p>
+                         <p className="font-sora font-bold text-center text-sm group-hover:text-accentBlue">{skill}</p>
                        </motion.div>
                      ))}
                    </div>
@@ -89,7 +89,7 @@ export default function Skills() {
                        const percentage = Math.floor(Math.random() * 30) + 70; // Mock proficiency 70-100%
                        return (
                          <div key={index} className="w-full">
-                           <div className="flex justify-between font-syne font-bold text-textPrimary mb-2">
+                           <div className="flex justify-between font-sora font-bold text-textPrimary mb-2">
                              <span>{skill}</span>
                              <span className="text-accentBlue">{percentage}%</span>
                            </div>

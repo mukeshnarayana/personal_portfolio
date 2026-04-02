@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center gap-2 group">
-            <span className="font-syne font-bold text-2xl tracking-tight text-gradient relative">
+            <span className="font-sora font-bold text-2xl tracking-tight text-gradient relative">
               MNP
               <motion.span 
                 className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accentBlue rounded-full"

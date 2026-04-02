@@ -11,7 +11,7 @@ export default function SectionWrapper({ id, title, children, className = '' }) 
           transition={{ duration: 0.6 }}
           className="mb-12 md:mb-16 flex flex-col items-center md:items-start"
         >
-          <h2 className="text-3xl md:text-5xl font-syne font-bold uppercase tracking-wider text-gradient mb-4">
+          <h2 className="text-3xl md:text-5xl font-sora font-bold uppercase tracking-wider text-gradient mb-4">
             {title}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-accentBlue to-accentViolet rounded-full relative">

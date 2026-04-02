@@ -4,7 +4,6 @@ import { Suspense, lazy } from 'react';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
 import ParticleBackground from './components/ParticleBackground';
 import LoadingScreen from './components/LoadingScreen';
 import useScrollToTop from './hooks/useScrollToTop';
@@ -27,7 +26,6 @@ function App() {
   return (
     <>
       <LoadingScreen />
-      <CustomCursor />
       <ParticleBackground />
       <div className="flex flex-col min-h-screen relative z-10 w-full pt-20">
         <Navbar />

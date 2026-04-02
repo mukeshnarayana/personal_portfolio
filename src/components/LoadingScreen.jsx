@@ -26,7 +26,7 @@ export default function LoadingScreen() {
             transition={{ duration: 1, ease: "backOut" }}
             className="relative"
           >
-            <h1 className="text-6xl md:text-8xl font-syne font-black text-gradient tracking-tighter">
+            <h1 className="text-6xl md:text-8xl font-sora font-black text-gradient tracking-tighter">
               MNP
             </h1>
             <motion.div 

@@ -46,7 +46,7 @@ export default function Education() {
                     <div className="glass-card p-6 lg:p-8 hover:-translate-y-2 group">
                       
                       <div className="flex justify-between items-start mb-4">
-                        <h3 className="font-syne font-bold text-2xl text-textPrimary group-hover:text-accentBlue transition-colors">
+                        <h3 className="font-sora font-bold text-2xl text-textPrimary group-hover:text-accentBlue transition-colors">
                           {edu.institution}
                         </h3>
                         {edu.logo && (
@@ -55,7 +55,7 @@ export default function Education() {
                       </div>
 
                       <div className="space-y-3 mb-6">
-                        <p className="font-syne text-lg text-accentViolet font-semibold">
+                        <p className="font-sora text-lg text-accentViolet font-semibold">
                           {edu.degree} - {edu.field}
                         </p>
 

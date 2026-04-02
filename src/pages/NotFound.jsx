@@ -17,7 +17,7 @@ export default function NotFound() {
           animate={{ y: [-20, 20, -20] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <h1 className="text-8xl md:text-9xl font-syne font-black text-transparent bg-clip-text bg-gradient-to-br from-accentBlue via-white to-accentViolet opacity-20">
+          <h1 className="text-8xl md:text-9xl font-sora font-black text-transparent bg-clip-text bg-gradient-to-br from-accentBlue via-white to-accentViolet opacity-20">
             404
           </h1>
           <motion.div 
@@ -31,11 +31,11 @@ export default function NotFound() {
           </motion.div>
         </motion.div>
 
-        <h2 className="text-3xl md:text-5xl font-syne font-bold font-bold text-textPrimary tracking-tight mb-4">
+        <h2 className="text-3xl md:text-5xl font-sora font-bold font-bold text-textPrimary tracking-tight mb-4">
           Lost in Space
         </h2>
         
-        <p className="text-xl text-textMuted max-w-lg mx-auto mb-10 leading-relaxed font-dm">
+        <p className="text-xl text-textMuted max-w-lg mx-auto mb-10 leading-relaxed font-space">
           The page you're searching for has drifted beyond the observable universe. Let's get you back on course.
         </p>
 
@@ -46,7 +46,7 @@ export default function NotFound() {
            >
              <Home size={28} />
            </motion.div>
-           <span className="font-syne font-bold uppercase tracking-widest text-sm text-accentBlue group-hover:text-white transition-colors">Abort Mission</span>
+           <span className="font-sora font-bold uppercase tracking-widest text-sm text-accentBlue group-hover:text-white transition-colors">Abort Mission</span>
         </Link>
       </div>
     </>

@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */ 
+// Trigger reload
 export default {
   content: [
     "./index.html",
@@ -17,8 +18,9 @@ export default {
         textMuted: "var(--text-muted)",
       },
       fontFamily: {
-        syne: ["Syne", "sans-serif"],
-        dm: ["DM Sans", "sans-serif"],
+        sora: ["Sora", "sans-serif"],
+        space: ["Space Grotesk", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       boxShadow: {
         glow: "var(--glow)",

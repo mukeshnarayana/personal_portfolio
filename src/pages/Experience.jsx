@@ -43,7 +43,7 @@ export default function Experience() {
                     <div className="relative z-10">
                       <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6 gap-4">
                         <div>
-                          <h3 className="font-syne font-bold text-2xl text-textPrimary group-hover:text-accentViolet transition-colors">
+                          <h3 className="font-sora font-bold text-2xl text-textPrimary group-hover:text-accentViolet transition-colors">
                             {exp.role}
                           </h3>
                           <div className="mt-2 text-xl font-medium text-accentBlue">

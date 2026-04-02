@@ -55,7 +55,7 @@ export default function Achievements() {
                   </div>
                   
                   <div className="flex-grow">
-                    <h3 className="font-syne font-bold text-xl text-textPrimary leading-snug mb-3">{ach.title}</h3>
+                    <h3 className="font-sora font-bold text-xl text-textPrimary leading-snug mb-3">{ach.title}</h3>
                     <p className="font-medium text-accentBlue mb-2">{ach.org}</p>
                     <p className="text-sm text-textMuted line-clamp-4">{ach.description}</p>
                   </div>
